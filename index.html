@@ -1095,36 +1095,26 @@
        <!-- CITE A SOURCE -->
         <div id="cite" class="tab-content">
             <h2>Cite a Source</h2>
-            <p>Search and generate your APA 7 citations instantly.</p>
+            <p>View static citations and references formatted for your paper below.</p>
 
-            <!-- Dynamic Controls -->
-            <div style="display: flex; gap: 10px; margin-bottom: 20px;">
-                <input type="text" id="widget-search-input" placeholder="Enter keyword, title, or DOI..." style="flex: 1; padding: 10px; border: 1px solid var(--border); border-radius: 4px; font-family: 'Times New Roman', Times, serif;" value="machine learning">
-                <button class="w-btn w-btn-docx" style="width: auto; padding: 0 20px;" onclick="updateWidgetQuery()">Search</button>
+            <!-- Static CiteMe Widget Container -->
+            <div style="width: 100%; background: #ffffff; border: 1px solid var(--border); border-radius: 8px; padding: 20px; margin-top: 20px; margin-bottom: 40px; box-sizing: border-box;">
+                <!-- CiteMe Widget (Static mode) -->
+                <script src="https://citeme.app/embed/citeme-widget.js" defer></script>
+                <div
+                data-citeme-bibliography="Author, A. (2024). &lt;i&gt;Title of work&lt;/i&gt;. Publisher."
+                data-citeme-in-text="(Author, 2024)"
+                ></div>
             </div>
 
-            <!-- Widget Container -->
-            <div style="width: 100%; background: #ffffff; border: 1px solid var(--border); border-radius: 8px; padding: 20px; margin-bottom: 40px; box-sizing: border-box;">
-                <script src="https://citeme.app/embed/citeme-widget.js" defer></script>
-                <div id="active-citeme-widget" data-citeme-query="machine learning" data-citeme-style="apa"></div>
+            <h3>APA 7 Reference Rules & Formatting Examples</h3>
+
+            <div class="citation-block">
+                <div class="citation-type">Book (Single Author)</div>
+                <div class="example-line"><span class="tag">In-Text Parenthetical:</span> (Smith, 2020, p. 15)</div>
+                <div class="example-line"><span class="tag">Reference List Entry:</span> Smith, J. M. (2020). <em>The psychology of learning</em>. Academic Press.</div>
             </div>
         </div>
-
-        <script>
-            function updateWidgetQuery() {
-                const query = document.getElementById('widget-search-input').value.trim();
-                const widgetDiv = document.getElementById('active-citeme-widget');
-                
-                if (query && widgetDiv) {
-                    // Update data attribute
-                    widgetDiv.setAttribute('data-citeme-query', query);
-                    
-                    // If the widget script supports re-initializing on DOM changes, 
-                    // you can trigger a custom event or reload the script element if needed.
-                    showToast('Citation query updated!');
-                }
-            }
-        </script>
 
         <h3>APA 7 Reference Rules & Formatting Examples</h3>
 
