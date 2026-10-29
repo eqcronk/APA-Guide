@@ -476,7 +476,7 @@
             position: relative;
         }
 
-        .bib-paper-canvas, .toc-paper-canvas, .abbr-paper-canvas {
+        .bib-paper-canvas {
             width: 450px;
             height: 582px;
             background: #ffffff;
@@ -495,7 +495,7 @@
             position: relative;
         }
 
-        .bib-entry-list, .toc-entry-list, .abbr-entry-list {
+        .bib-entry-list {
             flex: 1 1 auto;
             min-height: 0;
             overflow: hidden;
@@ -621,7 +621,7 @@
             font-family: 'Times New Roman', Times, serif;
         }
 
-        .bib-header-title, .toc-header-title, .abbr-header-title {
+        .bib-header-title {
             font-family: 'Times New Roman', Times, serif;
             font-size: 8.5pt;
             font-weight: bold;
@@ -631,7 +631,7 @@
             color: #000;
         }
 
-        .bib-entry-list, .toc-entry-list, .abbr-entry-list {
+        .bib-entry-list {
             width: 100%;
             font-family: 'Times New Roman', Times, serif;
             font-size: 8.5pt;
@@ -650,66 +650,6 @@
             font-weight: normal;
         }
 
-        .abbr-item-row {
-            display: flex;
-            align-items: baseline;
-            margin-bottom: 6pt;
-            width: 100%;
-            font-family: 'Times New Roman', Times, serif;
-        }
-
-        .abbr-item-def {
-            flex: 1 1 auto;
-            min-width: 0;
-            text-align: left;
-            overflow-wrap: break-word;
-            font-family: 'Times New Roman', Times, serif;
-            font-weight: normal;
-            padding-right: 12px;
-        }
-
-        .abbr-item-term {
-            flex: 0 0 auto;
-            white-space: nowrap;
-            font-weight: bold;
-            font-family: 'Times New Roman', Times, serif;
-        }
-
-        .toc-item-row {
-            display: flex;
-            align-items: baseline;
-            margin-bottom: 12pt;
-            width: 100%;
-            line-height: 1.2;
-            font-family: 'Times New Roman', Times, serif;
-        }
-
-        .toc-item-title {
-            flex: 0 1 auto;
-            padding-right: 4px;
-            overflow-wrap: break-word;
-            font-family: 'Times New Roman', Times, serif;
-        }
-
-        .toc-item-dots {
-            flex: 1 1 auto;
-            min-width: 12px;
-            border-bottom: 1px dotted #000;
-            margin: 0 4px;
-            transform: translateY(-0.2em);
-        }
-
-        .toc-item-page {
-            flex: 0 0 auto;
-            padding-left: 4px;
-            text-align: right;
-            white-space: nowrap;
-            font-family: 'Times New Roman', Times, serif;
-        }
-
-        .toc-level-1 { padding-left: 0; font-weight: bold; }
-        .toc-level-2 { padding-left: 0.2in; font-weight: normal; }
-        .toc-level-3 { padding-left: 0.4in; font-weight: normal; font-style: italic; }
 
         .w-apa-text {
             font-family: 'Times New Roman', Times, serif;
@@ -806,7 +746,7 @@
                 </div>
                 <div class="card" onclick="switchTab('format', document.querySelector('[onclick*=format]'))">
                     <h4>Format My Paper</h4>
-                    <p>Build your title page, body, headings, table of contents, and references list.</p>
+                    <p>Build your title page, body, headings, and references list.</p>
                 </div>
                 <div class="card" onclick="switchTab('cite', document.querySelector('[onclick*=cite]'))">
                     <h4>Cite a Source</h4>
@@ -1035,63 +975,6 @@
                 </div>
             </div>
 
-            <!-- ABBREVIATION / ACRONYM PAGE GENERATOR WIDGET -->
-            <h3 style="margin-top: 50px;">4. Abbreviations & Acronyms List</h3>
-            <div class="info-disclaimer">⚠️ <strong>Notice:</strong> This tool does <strong>not auto-save</strong>. Please export or copy your work frequently to avoid losing progress.</div>
-            <p><strong>APA Acronym Rules:</strong> Spell out the full term on first mention followed by the abbreviation in parentheses, e.g., <em>American Psychological Association (APA)</em>. If creating an appendix or reference list for terms, use this generator.</p>
-
-            <div class="widget-wrapper">
-                <div class="widget-sidebar">
-                    <div class="widget-input-group" style="flex: 1; display: flex; flex-direction: column;">
-                        <label for="abbr-paste-area">Entries (Format: Abbr = Full Title)</label>
-                        <textarea id="abbr-paste-area" style="flex: 1; min-height: 220px; line-height: 1.4;" placeholder="APA = American Psychological Association&#10;DSM-5-TR = Diagnostic and Statistical Manual of Mental Disorders (5th ed., text rev.)&#10;DOI = Digital Object Identifier&#10;ANOVA = Analysis of Variance"></textarea>
-                    </div>
-
-                    <div class="widget-actions">
-                        <button class="w-btn w-btn-docx" onclick="downloadAbbrDocx()">Download .DOCX</button>
-                        <button class="w-btn w-btn-pdf" onclick="downloadAbbrPdf()">Download .PDF</button>
-                        <button class="w-btn w-btn-copy" onclick="copyAbbrText()">Copy Plain Text</button>
-                    </div>
-                </div>
-
-                <div class="widget-preview-area" id="abbr-preview-area">
-                    <div class="abbr-paper-canvas" id="abbr-canvas">
-                        <div class="abbr-header-title">Abbreviations</div>
-                        <div class="abbr-entry-list" id="abbr-entry-list"></div>
-                        <div class="gen-page-footer">4</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- TABLE OF CONTENTS GENERATOR WIDGET -->
-            <h3 style="margin-top: 50px;">5. Table of Contents Generator</h3>
-            <div class="info-disclaimer">⚠️ <strong>Notice:</strong> Standard APA student papers rarely require a Table of Contents unless specified by your instructor or thesis committee.</div>
-
-            <div class="widget-wrapper">
-                <div class="widget-sidebar">
-                    <div class="widget-input-group" style="flex: 1; display: flex; flex-direction: column;">
-                        <label for="toc-paste-area">Entries (Format: Title, Page)</label>
-                        <textarea id="toc-paste-area" style="flex: 1; min-height: 220px; line-height: 1.4;" placeholder="Introduction, 2&#10;Methodological Foundations, 3&#10;> Participant Selection and Demographics, 4&#10;>> Socioeconomic Data Collection, 5&#10;Results, 7&#10;Discussion, 10&#10;References, 12"></textarea>
-                    </div>
-
-                    <div class="widget-actions">
-                        <button class="w-btn w-btn-docx" onclick="downloadTocDocx()">Download .DOCX</button>
-                        <button class="w-btn w-btn-pdf" onclick="downloadTocPdf()">Download .PDF</button>
-                        <button class="w-btn w-btn-copy" onclick="copyTocText()">Copy Plain Text</button>
-                    </div>
-                </div>
-
-                <div class="widget-preview-area" id="toc-preview-area">
-                    <div class="toc-paper-canvas" id="toc-canvas">
-                        <div class="toc-header-title">Contents</div>
-                        <div class="toc-entry-list" id="toc-entry-list"></div>
-                        <div class="gen-page-footer">2</div>
-                    </div>
-                </div>
-            </div>
-
-        </div><!-- /#format.tab-content -->
-
        <!-- CITE A SOURCE -->
         <div id="cite" class="tab-content">
             <h2>Cite a Source</h2>
@@ -1248,17 +1131,11 @@
             vContent: document.getElementById('body-view-content')
         };
 
-        const tocPasteArea = document.getElementById('toc-paste-area');
-        const tocEntryList = document.getElementById('toc-entry-list');
-        let currentTocEntries = [];
 
         const bibPasteArea = document.getElementById('bib-paste-area');
         const bibEntryList = document.getElementById('bib-entry-list');
         let currentAlphabetizedEntries = [];
 
-        const abbrPasteArea = document.getElementById('abbr-paste-area');
-        const abbrEntryList = document.getElementById('abbr-entry-list');
-        let currentAbbrEntries = [];
 
         function showToast(message) {
             const toast = document.getElementById('toast');
@@ -1534,85 +1411,6 @@
             }
         }
 
-        // TABLE OF CONTENTS ENGINE
-        function processAndRenderToc() {
-            const rawText = tocPasteArea.value;
-            if (!rawText || !rawText.trim()) {
-                resetGeneratorToSinglePage('toc-preview-area', 'toc-paper-canvas', 'toc-entry-list',
-                    '<div style="color: #94a3b8; font-style: italic; text-align: center; font-size: 8.5pt;">Enter table of contents items on the left.</div>');
-                currentTocEntries = [];
-                return;
-            }
-
-            const lines = rawText.split(/\r?\n/).map(l => l.trim()).filter(l => l.length > 0);
-            currentTocEntries = [];
-            const rows = [];
-
-            lines.forEach(line => {
-                let level = 1;
-                let cleanLine = line;
-
-                if (cleanLine.startsWith('>>')) {
-                    level = 3;
-                    cleanLine = cleanLine.substring(2).trim();
-                } else if (cleanLine.startsWith('>')) {
-                    level = 2;
-                    cleanLine = cleanLine.substring(1).trim();
-                }
-
-                let title = cleanLine;
-                let page = '';
-
-                if (cleanLine.includes(',')) {
-                    const parts = cleanLine.split(',');
-                    page = parts.pop().trim();
-                    title = parts.join(',').trim();
-                } else if (cleanLine.includes('\t')) {
-                    const parts = cleanLine.split('\t');
-                    page = parts.pop().trim();
-                    title = parts.join(' ').trim();
-                }
-
-                currentTocEntries.push({ title, page, level });
-
-                const rowDiv = document.createElement('div');
-                rowDiv.className = `toc-item-row toc-level-${level}`;
-
-                const titleSpan = document.createElement('span');
-                titleSpan.className = 'toc-item-title';
-                titleSpan.textContent = title;
-
-                const dotsSpan = document.createElement('span');
-                dotsSpan.className = 'toc-item-dots';
-
-                const pageSpan = document.createElement('span');
-                pageSpan.className = 'toc-item-page';
-                pageSpan.textContent = page;
-
-                rowDiv.appendChild(titleSpan);
-                rowDiv.appendChild(dotsSpan);
-                rowDiv.appendChild(pageSpan);
-
-                rows.push(rowDiv);
-            });
-
-            paginateGenerator({
-                previewAreaId: 'toc-preview-area',
-                canvasClass:   'toc-paper-canvas',
-                listClass:     'toc-entry-list',
-                elements:      rows,
-                buildPage: function (num) {
-                    return '<div class="toc-header-title">Contents (cont.)</div>' +
-                           '<div class="toc-entry-list"></div>' +
-                           '<div class="gen-page-footer">' + num + '</div>';
-                }
-            });
-        }
-
-        if (tocPasteArea) {
-            tocPasteArea.addEventListener('input', processAndRenderToc);
-            processAndRenderToc();
-        }
 
         // REFERENCES ALPHABETIZER ENGINE
         function processAndAlphabetizeBibliography() {
@@ -1656,80 +1454,7 @@
             processAndAlphabetizeBibliography();
         }
 
-        // ABBREVIATIONS ENGINE
-        function processAndRenderAbbreviations() {
-            const rawText = abbrPasteArea.value;
-            if (!rawText || !rawText.trim()) {
-                resetGeneratorToSinglePage('abbr-preview-area', 'abbr-paper-canvas', 'abbr-entry-list',
-                    '<div style="color: #94a3b8; font-style: italic; text-align: center; font-size: 8.5pt;">Enter abbreviations on the left.</div>');
-                currentAbbrEntries = [];
-                return;
-            }
 
-            const lines = rawText.split(/\r?\n/).map(l => l.trim()).filter(l => l.length > 0);
-            currentAbbrEntries = [];
-
-            lines.forEach(line => {
-                let term = '';
-                let definition = '';
-
-                if (line.includes('=')) {
-                    const parts = line.split('=');
-                    term = parts[0].trim();
-                    definition = parts.slice(1).join('=').trim();
-                } else if (line.includes(',')) {
-                    const parts = line.split(',');
-                    term = parts[0].trim();
-                    definition = parts.slice(1).join(',').trim();
-                } else if (line.includes('\t')) {
-                    const parts = line.split('\t');
-                    term = parts[0].trim();
-                    definition = parts.slice(1).join('\t').trim();
-                } else {
-                    term = line.trim();
-                }
-
-                if (term) {
-                    currentAbbrEntries.push({ term, definition });
-                }
-            });
-
-            currentAbbrEntries.sort((a, b) => a.term.localeCompare(b.term));
-
-            const rows = currentAbbrEntries.map(item => {
-                const rowDiv = document.createElement('div');
-                rowDiv.className = 'abbr-item-row';
-
-                const termSpan = document.createElement('span');
-                termSpan.className = 'abbr-item-term';
-                termSpan.textContent = item.term;
-
-                const defSpan = document.createElement('span');
-                defSpan.className = 'abbr-item-def';
-                defSpan.textContent = item.definition;
-
-                rowDiv.appendChild(termSpan); 
-                rowDiv.appendChild(defSpan);  
-                return rowDiv;
-            });
-
-            paginateGenerator({
-                previewAreaId: 'abbr-preview-area',
-                canvasClass:   'abbr-paper-canvas',
-                listClass:     'abbr-entry-list',
-                elements:      rows,
-                buildPage: function (num) {
-                    return '<div class="abbr-header-title">Abbreviations (cont.)</div>' +
-                           '<div class="abbr-entry-list"></div>' +
-                           '<div class="gen-page-footer">' + num + '</div>';
-                }
-            });
-        }
-
-        if (abbrPasteArea) {
-            abbrPasteArea.addEventListener('input', processAndRenderAbbreviations);
-            processAndRenderAbbreviations();
-        }
 
         // EXPORT ENGINE
         function copyWidgetText() {
@@ -1753,19 +1478,6 @@
             fallbackCopyText(outputString, 'Body text copied to clipboard!');
         }
 
-        function copyTocText() {
-            if (currentTocEntries.length === 0) {
-                showToast('No Table of Contents items to copy.');
-                return;
-            }
-            let outputString = "Contents\n\n";
-            currentTocEntries.forEach(item => {
-                const indent = item.level === 2 ? "  " : item.level === 3 ? "    " : "";
-                const dots = " " + ".".repeat(Math.max(2, 40 - item.title.length - indent.length)) + " ";
-                outputString += `${indent}${item.title}${dots}${item.page}\n`;
-            });
-            fallbackCopyText(outputString, 'Table of Contents copied to clipboard!');
-        }
 
         function copyBibText() {
             if (currentAlphabetizedEntries.length === 0) {
@@ -1774,18 +1486,6 @@
             }
             const outputString = "References\n\n" + currentAlphabetizedEntries.join("\n\n");
             fallbackCopyText(outputString, 'Alphabetized References copied to clipboard!');
-        }
-
-        function copyAbbrText() {
-            if (currentAbbrEntries.length === 0) {
-                showToast('No abbreviation items to copy.');
-                return;
-            }
-            let outputString = "Abbreviations\n\n";
-            currentAbbrEntries.forEach(item => {
-                outputString += `${item.term}\t${item.definition}\n`;
-            });
-            fallbackCopyText(outputString, 'Abbreviations copied to clipboard!');
         }
 
         function fallbackCopyText(text, successMsg) {
@@ -1864,14 +1564,7 @@
             exportToPdf('#bib-preview-area .bib-paper-canvas', 'APA7_References.pdf');
         }
 
-        function downloadTocPdf() {
-            exportToPdf('#toc-preview-area .toc-paper-canvas', 'APA7_Table_of_Contents.pdf');
-        }
-
-        function downloadAbbrPdf() {
-            exportToPdf('#abbr-preview-area .abbr-paper-canvas', 'APA7_Abbreviations.pdf');
-        }
-
+       
         function downloadWidgetDocx() {
             const docxLibrary = window.docx;
             if (!docxLibrary) {
@@ -1976,66 +1669,6 @@
             }
         }
 
-        function downloadTocDocx() {
-            const docxLibrary = window.docx;
-            if (!docxLibrary) {
-                showToast("Error: Word document library is unavailable.");
-                return;
-            }
-
-            if (currentTocEntries.length === 0) {
-                showToast("No Table of Contents data to export.");
-                return;
-            }
-
-            const { Document, Packer, Paragraph, TextRun, AlignmentType, TabStopType, TabStopPosition } = docxLibrary;
-
-            try {
-                const tocParagraphs = [
-                    new Paragraph({
-                        alignment: AlignmentType.CENTER,
-                        spacing: { after: 288 },
-                        children: [new TextRun({ text: "Contents", font: "Times New Roman", size: 24, bold: true })]
-                    })
-                ];
-
-                currentTocEntries.forEach(item => {
-                    const indentSize = item.level === 2 ? 360 : item.level === 3 ? 720 : 0;
-                    tocParagraphs.push(new Paragraph({
-                        tabStops: [
-                            {
-                                type: TabStopType.RIGHT,
-                                position: TabStopPosition.MAX,
-                                leader: 'dot',
-                            },
-                        ],
-                        indent: { left: indentSize },
-                        spacing: { after: 120 },
-                        children: [
-                            new TextRun({ text: item.title, font: "Times New Roman", size: 24, bold: item.level === 1, italic: item.level === 3 }),
-                            new TextRun({ text: `\t${item.page}`, font: "Times New Roman", size: 24, bold: item.level === 1 })
-                        ]
-                    }));
-                });
-
-                const documentStructure = new Document({
-                    sections: [{
-                        properties: {
-                            page: { margin: { top: 1440, right: 1440, bottom: 1440, left: 1440 } }
-                        },
-                        children: tocParagraphs
-                    }]
-                });
-
-                Packer.toBlob(documentStructure).then(fileBlob => {
-                    saveFileBlob(fileBlob, "APA7_Table_of_Contents.docx");
-                }).catch(err => {
-                    showToast("TOC DOCX generation error: " + err.message);
-                });
-            } catch (err) {
-                showToast("TOC DOCX error: " + err.message);
-            }
-        }
 
         function downloadBibDocx() {
             const docxLibrary = window.docx;
@@ -2087,64 +1720,7 @@
             }
         }
 
-        function downloadAbbrDocx() {
-            const docxLibrary = window.docx;
-            if (!docxLibrary) {
-                showToast("Error: Word document library is unavailable.");
-                return;
-            }
-
-            if (currentAbbrEntries.length === 0) {
-                showToast("No abbreviation data to export.");
-                return;
-            }
-
-            const { Document, Packer, Paragraph, TextRun, AlignmentType } = docxLibrary;
-
-            try {
-                const abbrParagraphs = [
-                    new Paragraph({
-                        alignment: AlignmentType.CENTER,
-                        spacing: { after: 288 },
-                        children: [new TextRun({ text: "Abbreviations", font: "Times New Roman", size: 24, bold: true })]
-                    })
-                ];
-
-                currentAbbrEntries.forEach(item => {
-                    abbrParagraphs.push(new Paragraph({
-                        tabStops: [
-                            {
-                                type: TabStopType.LEFT,
-                                position: 2160,
-                            },
-                        ],
-                        spacing: { after: 120 },
-                        children: [
-                            new TextRun({ text: item.term, font: "Times New Roman", size: 24, bold: true }),
-                            new TextRun({ text: `\t${item.definition}`, font: "Times New Roman", size: 24, bold: false })
-                        ]
-                    }));
-                });
-
-                const documentStructure = new Document({
-                    sections: [{
-                        properties: {
-                            page: { margin: { top: 1440, right: 1440, bottom: 1440, left: 1440 } }
-                        },
-                        children: abbrParagraphs
-                    }]
-                });
-
-                Packer.toBlob(documentStructure).then(fileBlob => {
-                    saveFileBlob(fileBlob, "APA7_Abbreviations.docx");
-                }).catch(err => {
-                    showToast("Abbreviations DOCX generation error: " + err.message);
-                });
-            } catch (err) {
-                showToast("Abbreviations DOCX error: " + err.message);
-            }
-        }
-
+       
         function saveFileBlob(blob, filename) {
             const fileURL = window.URL.createObjectURL(blob);
             const anchorElement = document.createElement("a");
