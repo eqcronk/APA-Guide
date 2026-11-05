@@ -254,13 +254,18 @@
             background-color: #1d4ed8;
         }
 
-        .citation-block {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: 15px;
-            margin-bottom: 20px;
-        }
+       .citation-block {
+        background: var(--card-bg, #ffffff);
+        padding: 20px;
+        border-radius: 8px;
+        border: 1px solid var(--border, #e2e8f0);
+        border-left: 4px solid var(--primary, #6b5c4f);
+        margin-top: 15px;
+        color: var(--text, #334155);
+        overflow-x: hidden;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+}
 
         .citation-type {
             font-weight: bold;
@@ -274,9 +279,9 @@
         }
 
         .example-line {
-            margin: 8px 0;
-            padding-left: 25px;
-            text-indent: -25px;
+            word-break: break-word;
+            overflow-wrap: break-word;
+            max-width: 100%;
         }
 
         .tag {
